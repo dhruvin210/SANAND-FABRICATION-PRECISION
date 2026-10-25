@@ -793,6 +793,12 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
 }
 
+/* Allow grid children to shrink below their intrinsic content width. */
+.hero-text-side,
+.hero-widget-side {
+  min-width: 0;
+}
+
 .hero-pill-tag {
   display: inline-flex;
   align-items: center;
@@ -1008,6 +1014,12 @@ h1, h2, h3, h4, h5, h6 {
 .model-name-text { font-weight: 700; color: #38bdf8; }
 .model-spec-val { font-family: var(--font-mono); color: #94a3b8; }
 
+.model-name-text,
+.model-spec-val {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 /* DFM Telemetry */
 .iqe-dfm-telemetry {
   display: flex;
@@ -1059,6 +1071,11 @@ h1, h2, h3, h4, h5, h6 {
   gap: 8px;
   font-size: 0.8125rem;
   color: var(--text-secondary);
+}
+
+.dropzone-text-row > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 /* Sample Parts Tray */
@@ -2574,6 +2591,200 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .header-container {
+    gap: 8px;
+  }
+
+  .brand-logo {
+    gap: 7px;
+    min-width: 0;
+  }
+
+  .logo-mark svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .logo-main-name {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+  }
+
+  .logo-sub-tag {
+    font-size: clamp(0.42rem, 2vw, 0.55rem);
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  /* The full desktop quote CTA crowds the brand on phones; the menu and
+     fixed bottom quote action remain available at this width. */
+  #header-quote-btn {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    flex: 0 0 38px;
+  }
+
+  .hero-section {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+
+  .hero-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .hero-pill-tag {
+    display: inline-flex;
+    align-items: flex-start;
+    white-space: normal;
+    line-height: 1.4;
+    border-radius: 14px;
+    padding: 6px 10px;
+    font-size: 0.72rem;
+  }
+
+  .hero-pill-tag .live-dot {
+    margin-top: 5px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 8.5vw, 2.65rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-subtext {
+    font-size: 0.96rem;
+    margin-bottom: 22px;
+  }
+
+  .hero-buttons-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .hero-buttons-row .btn {
+    width: 100%;
+    white-space: normal;
+    min-height: 48px;
+    height: auto;
+    text-align: center;
+  }
+
+  .hero-stats-strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 12px;
+    padding-top: 16px;
+  }
+
+  .h-stat-card {
+    min-width: 0;
+  }
+
+  .h-stat-num {
+    font-size: clamp(1.05rem, 5vw, 1.25rem);
+  }
+
+  .h-stat-label {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .h-stat-sep {
+    display: none;
+  }
+
+  .iqe-widget-card {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .iqe-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .iqe-tab-switcher {
+    grid-template-columns: 1fr;
+  }
+
+  .iqe-tab-btn {
+    min-height: 40px;
+  }
+
+  .iqe-viewport-container {
+    height: clamp(190px, 58vw, 260px);
+  }
+
+  .iqe-model-tag {
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 0.66rem;
+  }
+
+  .iqe-dfm-telemetry {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 8px;
+  }
+
+  .dropzone-text-row {
+    flex-direction: column;
+    font-size: 0.78rem;
+  }
+
+  .iqe-quote-btn {
+    height: auto;
+    min-height: 48px;
+    white-space: normal;
+  }
+
+  .strip-container {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .strip-sectors {
+    gap: 8px 12px;
+  }
+
+  .sector-tag {
+    font-size: 0.75rem;
+  }
+
+  .mobile-sticky-bottom-bar {
+    padding: 9px 14px calc(9px + env(safe-area-inset-bottom));
+  }
+
+  body {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-nav-drawer {
+    height: calc(100dvh - var(--header-height));
+  }
+
   .comparator-selectors-row {
     flex-direction: column;
     align-items: stretch;
@@ -2585,5 +2796,29 @@ h1, h2, h3, h4, h5, h6 {
   .modal-dialog {
     max-height: 96vh;
     border-radius: var(--radius-lg);
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .logo-sub-tag {
+    letter-spacing: 0.035em;
+  }
+
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hero-stats-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .iqe-widget-card {
+    padding: 12px;
   }
 }
